@@ -1,5 +1,5 @@
 ## Description
-This email service allows user to send email using Gmail as an email provider. This API requires basic authentication where the username and password will be the user's email credentials.
+This email service allows user to send email using Gmail as an email provider. This API requires basic authentication where the username and password will be the sender's email credentials.
 
 ## Prerequisites
 1. Gmail account - turn on "Less secure app access" in the account security section.
@@ -18,7 +18,7 @@ Go to http://localhost:3000/api/docs.
 ### Things to improve
 - Improve authorization such as using OAuth.
 - Extend email service to include other email features such as bcc, cc, etc.
-- Extend email service to be processed using Google Task Queue (or other equivalent tools by other providers) so that email can be queued for processing. This will ensure that the quicker response from the endpoint and also able to leverage the features of Task Queue such as configurable concurrent rate limit, max retries and etc.
+- Extend email service to be processed using Google Task Queue (or other equivalent tools by other providers) so that the email processing can leverage the features of Task Queue such as configurable concurrent rate limit, max retries and etc.
 - Email address validation for request "sender" and "recepient".
 - Support other email provider such as O365 calendar.
 - Implement a proper logging.
