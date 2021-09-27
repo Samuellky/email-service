@@ -39,15 +39,15 @@ export class CreateMessageCommandHandler implements ICommandHandler<CreateMessag
 
     var mailer = this.mailerFactory.getGoogleMailer(command.userName, command.password);
 
-    mailer.sendMail({
-      from: { address: command.sender },
-      to: [{ address: command.recepient }],
-      text: command.content,
-      subject: command.title,
-    } as MailOptions, (error) => {
-      if (error) {
-        throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
-      }
-    });
+    try {
+      await mailer.sendMail({
+        from: { address: command.sender },
+        to: [{ address: command.recepient }],
+        text: command.content,
+        subject: command.title,
+      } as MailOptions);
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
   }
 }
